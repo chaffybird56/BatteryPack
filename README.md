@@ -8,12 +8,13 @@ This project provides a complete, observable, and testable battery pack simulato
 - **Sensitivity & sweeps**: series/parallel counts, thermal conductance, current profiles, and internal resistance impact
 - **Validation checks** and unit tests
 
-The README serves as the requested one-page summary with plots and screenshots embedded.
+In plain terms: this toolkit helps you answer three questions about an N‑cell battery pack under realistic driving/usage profiles: (1) how much energy you actually get back (efficiency), (2) how hot the pack gets (thermal limits), and (3) how much power you can safely pull or push (power limits) as state‑of‑charge and temperature change.
 
 ### Quick start
 ```bash
 python3 -m venv .venv && source .venv/bin/activate
 pip install -r requirements.txt
+export PYTHONPATH=$PWD  # ensure local package is importable
 
 # Generate assets for README (plots)
 python scripts/generate_readme_plots.py
@@ -28,19 +29,33 @@ python scripts/run_sweeps.py
 pytest -q
 ```
 
-### One-page summary (results + design connections)
-- **System setup**: Pack of `Ns x Np` identical cells with ECM and a **single thermal node**. Default: 40s x 3p.
-- **Drive cycle**: Synthetic UDDS-like profile with bursts and regen; adjustable amplitude.
-- **RTE**: Computed by discharging on the cycle then charging on a mirrored profile until SOC returns to the start.
-- **Temperature**: Lumped node captures heat generation and UA-based cooling to ambient.
-- **Power limits**: Instantaneous discharge/charge limits vs SOC based on voltage and SOC windows.
-- **Sensitivities**: Impact of cell resistance, cooling (UA), SOC window, and (Ns, Np) on RTE, peak temperature, and limits.
+### Who is this for and real-world applications
+- **EV/HEV pack sizing and BMS prototyping**: Explore (Ns, Np) tradeoffs, SOC windows, and thermal/cooling needs before hardware.
+- **Stationary storage and microgrids**: Evaluate round‑trip efficiency and thermal behavior across daily cycling patterns.
+- **Drones/robots/power tools**: Check short‑burst power limits and temperature rise under aggressive current spikes.
+- **Thermal design**: Compare cooling assumptions (UA) and their impact on safe operating zones and lifespan.
+- **Safety and compliance**: Identify conditions where thermal or voltage limits may be violated for certification prep.
+- **Digital twins / HIL**: Generate fast surrogate behavior for system‑level simulations and control prototyping.
+
+### Model overview (results and design connections)
+- **System setup**: Pack of `Ns x Np` identical cells with a first‑order ECM and a **single thermal node**; defaults: 40s × 3p.
+- **Drive cycle**: Synthetic UDDS‑like profile with bursts and regen; amplitude easily tuned.
+- **RTE**: Discharge on the cycle, then charge on a mirrored cycle until SOC returns to the start.
+- **Temperature**: Lumped thermal node with UA‑based cooling to ambient guides thermal constraints.
+- **Power limits**: Instantaneous discharge/charge limits vs SOC from voltage and SOC windows.
+- **Sensitivities**: Cell resistance, cooling (UA), SOC window, and (Ns, Np) affect RTE, peak temperature, and limits.
 
 ### Embedded plots (generated via `scripts/generate_readme_plots.py`)
 ![Time Series](assets/time_series.png)
 ![Temperature](assets/temperature.png)
 ![RTE](assets/rte.png)
 ![Power Limits](assets/power_limits.png)
+
+### How to read the plots
+- **Time series**: Current, voltage, power, and SOC vs time on the discharge cycle. Highlights transient voltage sag and recovery.
+- **Temperature**: Pack temperature (°C) across both discharge and charge phases, showing thermal rise and cooldown with assumed UA.
+- **RTE bar**: Energy out vs energy in after returning to the starting SOC. Lower R or higher Np generally improves RTE.
+- **Power limits**: Max discharge/charge power vs SOC, constrained by pack voltage limits and SOC window. Use this to define BMS power envelopes.
 
 ### What to look for
 - **RTE vs resistance**: Higher resistance lowers RTE and raises temperature; design implication: reduce I²R via lower R or higher Np.
@@ -69,12 +84,12 @@ tests/
 assets/             # Generated figures shown above
 ```
 
-### Extendability (ideas included or ready to add)
-- **Thermal modeling**: Multi-node pack cooling; fin/PCM/liquid-cooling parameterizations.
-- **Aging**: Simple capacity/resistance growth with throughput and temperature.
-- **Cell-to-cell variation**: Randomized cell parameters and balancing strategies.
-- **ML hooks**: Fit a lightweight regressor from sweep data to predict peak temperature and RTE (ready to add in a follow-up PR).
-- **PyBaMM coupling**: Swap ECM with PyBaMM models for high-fidelity studies.
+### Advanced features and extensions
+- **Multi‑node thermal modeling**: Extend beyond a single lumped node to cell/segment‑level nodes; compare **fin/PCM/liquid‑cooling parameterizations** by adjusting thermal conductance paths and sink temperatures.
+- **Aging effects**: Add simple laws for capacity fade and resistance growth with throughput and temperature to study long‑term RTE and power limits.
+- **Cell‑to‑cell variation & balancing**: Randomize cell parameters to assess imbalance, then test balancing strategies and their thermal/electrical impact.
+- **ML hooks**: Train a lightweight regressor on sweep data to predict peak temperature and RTE, enabling fast design‑space exploration.
+- **PyBaMM coupling**: Swap the ECM with PyBaMM models for high‑fidelity electrochemistry when needed.
 
 ### License
 MIT. See `LICENSE`.
