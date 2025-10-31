@@ -39,8 +39,11 @@ def run_parameter_sweep(
 		)
 		pack = BatteryPack(cell_params=cell, pack_params=p, thermal_params=th, initial_soc=sim.initial_soc)
 		cycle = synthetic_cycle(t_total_s=sim.t_total_s, dt_s=sim.dt_s, peak_current_a=peak)
-		res = Simulator(pack, sim).run(cycle)
+		SimulatorObj = Simulator(pack, sim)
+		res = SimulatorObj.run(cycle)
 		peak_temp_k = float(res["temp_k"].max())
+		# Compute RTE on the same cycle from starting SOC
+		RTEres = SimulatorObj.round_trip_efficiency(cycle, initial_soc=sim.initial_soc)
 		viol_temp = peak_temp_k > th.T_max_k + 1e-6
 		viol_soc = bool((res["soc"].min() < 0.1) or (res["soc"].max() > 0.9))
 		rows.append({
@@ -49,6 +52,9 @@ def run_parameter_sweep(
 			"UA_w_per_k": UA,
 			"peak_current_a": peak,
 			"peak_temp_k": peak_temp_k,
+			"RTE_percent": RTEres.RTE_percent,
+			"energy_out_wh": RTEres.energy_out_wh,
+			"energy_in_wh": RTEres.energy_in_wh,
 			"viol_temp": int(viol_temp),
 			"viol_soc": int(viol_soc),
 		})

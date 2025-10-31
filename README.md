@@ -29,6 +29,22 @@ python scripts/run_sweeps.py
 pytest -q
 ```
 
+### Advanced usage
+- **Advanced demo (multi-node thermal + variation + aging + balancing):**
+```bash
+python scripts/run_advanced_demo.py --thermal-mode fin --no-pybamm-ocv
+```
+- **Train ML predictors (peak temperature and RTE) from sweep results:**
+```bash
+# After running run_sweeps.py, point to the latest sweep CSV
+python scripts/train_ml.py --sweep-csv outputs/sweeps/latest/sweep_results.csv --out-dir outputs/ml
+```
+- **Optional PyBaMM OCV coupling:** install optional deps then enable `--use-pybamm-ocv` in the advanced demo.
+```bash
+pip install -r requirements-optional.txt
+python scripts/run_advanced_demo.py --thermal-mode liquid --use-pybamm-ocv
+```
+
 ### Who is this for and real-world applications
 - **EV/HEV pack sizing and BMS prototyping**: Explore (Ns, Np) tradeoffs, SOC windows, and thermal/cooling needs before hardware.
 - **Stationary storage and microgrids**: Evaluate round‑trip efficiency and thermal behavior across daily cycling patterns.
