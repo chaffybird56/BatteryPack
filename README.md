@@ -20,17 +20,40 @@ This project provides a complete, observable, and testable battery pack simulato
 In plain terms: this toolkit helps you answer three questions about an N‑cell battery pack under realistic driving/usage profiles: (1) how much energy you actually get back (efficiency), (2) how hot the pack gets (thermal limits), and (3) how much power you can safely pull or push (power limits) as state‑of‑charge and temperature change.
 
 ### Table of contents
-- **Getting started 🚀**
-- **Advanced usage 🧪**
-- **Who is this for and real-world applications 🌍**
-- **Model overview 🧩**
-- **Plot gallery 📊**
-- **How to read the plots 📖**
-- **What to look for 🔎**
-- **Repo layout 🗂️**
-- **Advanced features and extensions 🧠**
-- **License 📝**
+- [Getting started 🚀](#getting-started)
+- [Advanced usage 🧪](#advanced-usage)
+- [Who is this for and real-world applications 🌍](#applications)
+- [Model overview 🧩](#model-overview)
+- [Plot gallery 📊](#plot-gallery)
+- [How to read the plots 📖](#how-to-read-the-plots)
+- [What to look for 🔎](#what-to-look-for)
+- [Repo layout 🗂️](#repo-layout)
+- [Advanced features and extensions 🧠](#advanced-features)
+- [License 📝](#license)
 
+<a id="plot-gallery"></a>
+### Plot gallery 📊 (generated via `scripts/generate_readme_plots.py`)
+
+| Time Series | Temperature |
+| --- | --- |
+| ![Time Series](assets/time_series.png) | ![Temperature](assets/temperature.png) |
+
+| RTE | Power Limits |
+| --- | --- |
+| ![RTE](assets/rte.png) | ![Power Limits](assets/power_limits.png) |
+
+<a id="how-to-read-the-plots"></a>
+<details open>
+<summary><strong>How to read the plots 📖</strong></summary>
+
+- **Time series**: Current, voltage, power, and SOC vs time on the discharge cycle. Highlights transient voltage sag and recovery.
+- **Temperature**: Pack temperature (°C) across both discharge and charge phases, showing thermal rise and cooldown with assumed UA.
+- **RTE bar**: Energy out vs energy in after returning to the starting SOC. Lower R or higher Np generally improves RTE.
+- **Power limits**: Max discharge/charge power vs SOC, constrained by pack voltage limits and SOC window. Use this to define BMS power envelopes.
+
+</details>
+
+<a id="getting-started"></a>
 ### Getting started 🚀
 ```bash
 python3 -m venv .venv && source .venv/bin/activate
@@ -50,6 +73,7 @@ python scripts/run_sweeps.py
 pytest -q
 ```
 
+<a id="advanced-usage"></a>
 ### Advanced usage 🧪
 - **Advanced demo (multi-node thermal + variation + aging + balancing):**
 ```bash
@@ -66,6 +90,7 @@ pip install -r requirements-optional.txt
 python scripts/run_advanced_demo.py --thermal-mode liquid --use-pybamm-ocv
 ```
 
+<a id="applications"></a>
 ### Who is this for and real-world applications 🌍
 - **EV/HEV pack sizing and BMS prototyping**: Explore (Ns, Np) tradeoffs, SOC windows, and thermal/cooling needs before hardware.
 - **Stationary storage and microgrids**: Evaluate round‑trip efficiency and thermal behavior across daily cycling patterns.
@@ -74,6 +99,7 @@ python scripts/run_advanced_demo.py --thermal-mode liquid --use-pybamm-ocv
 - **Safety and compliance**: Identify conditions where thermal or voltage limits may be violated for certification prep.
 - **Digital twins / HIL**: Generate fast surrogate behavior for system‑level simulations and control prototyping.
 
+<a id="model-overview"></a>
 ### Model overview (results and design connections) 🧩
 - **System setup**: Pack of `Ns x Np` identical cells with a first‑order ECM and a **single thermal node**; defaults: 40s × 3p.
 - **Drive cycle**: Synthetic UDDS‑like profile with bursts and regen; amplitude easily tuned.
@@ -82,32 +108,16 @@ python scripts/run_advanced_demo.py --thermal-mode liquid --use-pybamm-ocv
 - **Power limits**: Instantaneous discharge/charge limits vs SOC from voltage and SOC windows.
 - **Sensitivities**: Cell resistance, cooling (UA), SOC window, and (Ns, Np) affect RTE, peak temperature, and limits.
 
-### Plot gallery 📊 (generated via `scripts/generate_readme_plots.py`)
+ 
 
-| Time Series | Temperature |
-| --- | --- |
-| ![Time Series](assets/time_series.png) | ![Temperature](assets/temperature.png) |
-
-| RTE | Power Limits |
-| --- | --- |
-| ![RTE](assets/rte.png) | ![Power Limits](assets/power_limits.png) |
-
-<details>
-<summary><strong>How to read the plots 📖</strong></summary>
-
-- **Time series**: Current, voltage, power, and SOC vs time on the discharge cycle. Highlights transient voltage sag and recovery.
-- **Temperature**: Pack temperature (°C) across both discharge and charge phases, showing thermal rise and cooldown with assumed UA.
-- **RTE bar**: Energy out vs energy in after returning to the starting SOC. Lower R or higher Np generally improves RTE.
-- **Power limits**: Max discharge/charge power vs SOC, constrained by pack voltage limits and SOC window. Use this to define BMS power envelopes.
-
-</details>
-
+<a id="what-to-look-for"></a>
 ### What to look for 🔎
 - **RTE vs resistance**: Higher resistance lowers RTE and raises temperature; design implication: reduce I²R via lower R or higher Np.
 - **Cooling vs safe zone**: Higher UA (better cooling) enlarges safe operating area under aggressive current profiles.
 - **SOC window effects**: Narrower windows reduce voltage/thermal stress but restrict usable energy.
 - **(Ns, Np) tradeoffs**: Ns scales voltage (power at given I); Np reduces per-cell current and I²R losses.
 
+<a id="repo-layout"></a>
 ### Repo layout 🗂️
 ```
 battery_pack/
@@ -129,6 +139,7 @@ tests/
 assets/             # Generated figures shown above
 ```
 
+<a id="advanced-features"></a>
 ### Advanced features and extensions 🧠
 - **Multi‑node thermal modeling**: Extend beyond a single lumped node to cell/segment‑level nodes; compare **fin/PCM/liquid‑cooling parameterizations** by adjusting thermal conductance paths and sink temperatures.
 - **Aging effects**: Add simple laws for capacity fade and resistance growth with throughput and temperature to study long‑term RTE and power limits.
@@ -136,6 +147,7 @@ assets/             # Generated figures shown above
 - **ML hooks**: Train a lightweight regressor on sweep data to predict peak temperature and RTE, enabling fast design‑space exploration.
 - **PyBaMM coupling**: Swap the ECM with PyBaMM models for high‑fidelity electrochemistry when needed.
 
+<a id="license"></a>
 ### License 📝
 MIT. See `LICENSE`.
 
