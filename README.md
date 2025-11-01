@@ -1,5 +1,14 @@
 ## BatteryPack: Electro-Thermal N-Cell Pack Modeling & Analysis
 
+<p align="left">
+  <a href="https://www.python.org/"><img alt="Python" src="https://img.shields.io/badge/Python-3.10%2B-3776AB?logo=python&logoColor=white"></a>
+  <a href="LICENSE"><img alt="License" src="https://img.shields.io/badge/License-MIT-green.svg"></a>
+  <a href="#tests"><img alt="Tests" src="https://img.shields.io/badge/Tests-pytest%20passing-brightgreen"></a>
+  <a href="https://github.com/chaffybird56/BatteryPack"><img alt="Repo" src="https://img.shields.io/badge/GitHub-BatteryPack-181717?logo=github"></a>
+</p>
+
+<em>Fast, observable pack‑level simulations with electro‑thermal coupling, sweeps, ML hooks, and publication‑ready plots.</em>
+
 This project provides a complete, observable, and testable battery pack simulator with:
 - **Electrical ECM** per cell (R0 + R1||C1) and smooth OCV(SOC)
 - **Lumped thermal node** for the pack with ambient cooling
@@ -10,7 +19,19 @@ This project provides a complete, observable, and testable battery pack simulato
 
 In plain terms: this toolkit helps you answer three questions about an N‑cell battery pack under realistic driving/usage profiles: (1) how much energy you actually get back (efficiency), (2) how hot the pack gets (thermal limits), and (3) how much power you can safely pull or push (power limits) as state‑of‑charge and temperature change.
 
-### Quick start
+### Table of contents
+- **Getting started**
+- **Advanced usage**
+- **Who is this for and real-world applications**
+- **Model overview**
+- **Plot gallery**
+- **How to read the plots**
+- **What to look for**
+- **Repo layout**
+- **Advanced features and extensions**
+- **License**
+
+### Getting started
 ```bash
 python3 -m venv .venv && source .venv/bin/activate
 pip install -r requirements.txt
@@ -61,11 +82,15 @@ python scripts/run_advanced_demo.py --thermal-mode liquid --use-pybamm-ocv
 - **Power limits**: Instantaneous discharge/charge limits vs SOC from voltage and SOC windows.
 - **Sensitivities**: Cell resistance, cooling (UA), SOC window, and (Ns, Np) affect RTE, peak temperature, and limits.
 
-### Embedded plots (generated via `scripts/generate_readme_plots.py`)
-![Time Series](assets/time_series.png)
-![Temperature](assets/temperature.png)
-![RTE](assets/rte.png)
-![Power Limits](assets/power_limits.png)
+### Plot gallery (generated via `scripts/generate_readme_plots.py`)
+
+| Time Series | Temperature |
+| --- | --- |
+| ![Time Series](assets/time_series.png) | ![Temperature](assets/temperature.png) |
+
+| RTE | Power Limits |
+| --- | --- |
+| ![RTE](assets/rte.png) | ![Power Limits](assets/power_limits.png) |
 
 ### How to read the plots
 - **Time series**: Current, voltage, power, and SOC vs time on the discharge cycle. Highlights transient voltage sag and recovery.
