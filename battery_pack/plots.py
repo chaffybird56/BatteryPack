@@ -15,7 +15,7 @@ def ensure_dir(path: Path) -> None:
 
 def plot_time_series(df: pd.DataFrame, out_dir: Path, title: str = "Pack Time Series") -> Path:
 	ensure_dir(out_dir)
-	fig, axes = plt.subplots(4, 1, figsize=(10, 10), sharex=True)
+	fig, axes = plt.subplots(4, 1, figsize=(8, 6), sharex=True)
 	t = df["time_s"].to_numpy()
 	axes = axes
 	axes[0].plot(t, df["i_pack_a"], label="Current (A)", color="#4e79a7")
@@ -45,7 +45,7 @@ def plot_time_series(df: pd.DataFrame, out_dir: Path, title: str = "Pack Time Se
 
 def plot_temperature(df: pd.DataFrame, out_dir: Path, title: str = "Pack Temperature") -> Path:
 	ensure_dir(out_dir)
-	fig, ax = plt.subplots(figsize=(10, 3.5))
+	fig, ax = plt.subplots(figsize=(8, 2.5))
 	ax.plot(df["time_s"], df["temp_k"] - 273.15, color="#b07aa1")
 	ax.set_ylabel("Temp (°C)")
 	ax.set_xlabel("Time (s)")
@@ -74,7 +74,7 @@ def plot_rte_bar(rte_percent: float, out_dir: Path) -> Path:
 
 def plot_power_limits(soc_grid: np.ndarray, p_dis: np.ndarray, p_chg: np.ndarray, out_dir: Path) -> Path:
 	ensure_dir(out_dir)
-	fig, ax = plt.subplots(figsize=(8, 4))
+	fig, ax = plt.subplots(figsize=(6, 3))
 	ax.plot(soc_grid, p_dis / 1000.0, label="Max Discharge", color="#59a14f")
 	ax.plot(soc_grid, -p_chg / 1000.0, label="Max Charge", color="#e15759")
 	ax.set_xlabel("SoC")
