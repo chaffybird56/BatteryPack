@@ -17,7 +17,23 @@ This project provides a complete, observable, and testable battery pack simulato
 - **Sensitivity & sweeps**: series/parallel counts, thermal conductance, current profiles, and internal resistance impact
 - **Validation checks** and unit tests
 
-In plain terms: this toolkit helps you answer three questions about an N‑cell battery pack under realistic driving/usage profiles: (1) how much energy you actually get back (efficiency), (2) how hot the pack gets (thermal limits), and (3) how much power you can safely pull or push (power limits) as state‑of‑charge and temperature change.
+#### 🎯 What This Does (In Plain Terms)
+
+Imagine you're designing a battery pack for an EV, drone, or grid storage. You need to answer three questions:
+
+1. **How much energy actually comes out vs. what went in?** (Efficiency)
+   - Energy is lost as heat through internal resistance. Higher resistance → lower efficiency.
+   - Operating at extreme temperatures further reduces efficiency.
+
+2. **How hot does the pack get during use?** (Thermal limits)
+   - Too hot can degrade the battery or trigger safety shutdowns.
+   - Cooling effectiveness determines your safe operating envelope.
+
+3. **How much power can I safely pull or push as the battery drains?** (Power limits)
+   - Voltage drops as charge depletes, limiting max power.
+   - SOC windows and temperature constraints shrink what's available.
+
+This toolkit simulates all three together—packing hundreds of N‑cells into a series‑parallel configuration, running realistic drive cycles or load profiles, and showing exactly where the limits are.
 
 ### Table of contents
 - [Getting started 🚀](#getting-started)
@@ -31,27 +47,33 @@ In plain terms: this toolkit helps you answer three questions about an N‑cell 
 - [Advanced features and extensions 🧠](#advanced-features)
 - [License 📝](#license)
 
+<a id="applications"></a>
+### Who is this for and real-world applications 🌍
+- **EV/HEV pack sizing and BMS prototyping**: Explore (Ns, Np) tradeoffs, SOC windows, and thermal/cooling needs before hardware.
+- **Stationary storage and microgrids**: Evaluate round‑trip efficiency and thermal behavior across daily cycling patterns.
+- **Drones/robots/power tools**: Check short‑burst power limits and temperature rise under aggressive current spikes.
+- **Thermal design**: Compare cooling assumptions (UA) and their impact on safe operating zones and lifespan.
+- **Safety and compliance**: Identify conditions where thermal or voltage limits may be violated for certification prep.
+- **Digital twins / HIL**: Generate fast surrogate behavior for system‑level simulations and control prototyping.
+
 <a id="plot-gallery"></a>
 ### Plot gallery 📊 (generated via `scripts/generate_readme_plots.py`)
 
-| Time Series | Temperature |
-| --- | --- |
-| ![Time Series](assets/time_series.png) | ![Temperature](assets/temperature.png) |
+![Time Series](assets/time_series.png)
 
-| RTE | Power Limits |
-| --- | --- |
-| ![RTE](assets/rte.png) | ![Power Limits](assets/power_limits.png) |
+![Temperature](assets/temperature.png)
+
+![RTE](assets/rte.png)
+
+![Power Limits](assets/power_limits.png)
 
 <a id="how-to-read-the-plots"></a>
-<details open>
-<summary><strong>How to read the plots 📖</strong></summary>
+### How to read the plots 📖
 
 - **Time series**: Current, voltage, power, and SOC vs time on the discharge cycle. Highlights transient voltage sag and recovery.
 - **Temperature**: Pack temperature (°C) across both discharge and charge phases, showing thermal rise and cooldown with assumed UA.
 - **RTE bar**: Energy out vs energy in after returning to the starting SOC. Lower R or higher Np generally improves RTE.
 - **Power limits**: Max discharge/charge power vs SOC, constrained by pack voltage limits and SOC window. Use this to define BMS power envelopes.
-
-</details>
 
 <a id="getting-started"></a>
 ### Getting started 🚀
@@ -84,20 +106,12 @@ python scripts/run_advanced_demo.py --thermal-mode fin --no-pybamm-ocv
 # After running run_sweeps.py, point to the latest sweep CSV
 python scripts/train_ml.py --sweep-csv outputs/sweeps/latest/sweep_results.csv --out-dir outputs/ml
 ```
-- **Optional PyBaMM OCV coupling:** install optional deps then enable `--use-pybamm-ocv` in the advanced demo.
+- **Optional PyBaMM OCV coupling:** install optional deps then enable `--use-pybamm-ocv` in the advanced demo. Alternatively, generate an OCV curve independently.
 ```bash
 pip install -r requirements-optional.txt
+python scripts/generate_pybamm_ocv.py --out-path assets/pybamm_ocv_curve.png
 python scripts/run_advanced_demo.py --thermal-mode liquid --use-pybamm-ocv
 ```
-
-<a id="applications"></a>
-### Who is this for and real-world applications 🌍
-- **EV/HEV pack sizing and BMS prototyping**: Explore (Ns, Np) tradeoffs, SOC windows, and thermal/cooling needs before hardware.
-- **Stationary storage and microgrids**: Evaluate round‑trip efficiency and thermal behavior across daily cycling patterns.
-- **Drones/robots/power tools**: Check short‑burst power limits and temperature rise under aggressive current spikes.
-- **Thermal design**: Compare cooling assumptions (UA) and their impact on safe operating zones and lifespan.
-- **Safety and compliance**: Identify conditions where thermal or voltage limits may be violated for certification prep.
-- **Digital twins / HIL**: Generate fast surrogate behavior for system‑level simulations and control prototyping.
 
 <a id="model-overview"></a>
 ### Model overview (results and design connections) 🧩
