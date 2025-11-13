@@ -12,6 +12,8 @@ jobs:
     strategy:
       matrix:
         python-version: ["3.10", "3.11", "3.12"]
+    env:
+      PYTHONPATH: ${{ github.workspace }}
 
     steps:
     - uses: actions/checkout@v3
@@ -34,8 +36,6 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt
         pip install pytest-cov black mypy types-PyYAML types-tqdm
-      env:
-        PYTHONPATH: ${{ github.workspace }}
     
     - name: Check code formatting with black
       run: |
@@ -46,8 +46,6 @@ jobs:
         mypy battery_pack/ --ignore-missing-imports || true
     
     - name: Run tests with pytest
-      env:
-        PYTHONPATH: ${{ github.workspace }}
       run: |
         pytest tests/ -v --cov=battery_pack --cov-report=xml --cov-report=term
     
