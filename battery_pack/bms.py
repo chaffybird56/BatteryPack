@@ -122,7 +122,7 @@ class BMSProtection:
                     current_limit = current_a
                     current_ok = True
                     message = "OK"
-                    temperature_ok = True
+                    # temperature_ok already set correctly at line 94, no need to override
 
         self._last_status = status
 

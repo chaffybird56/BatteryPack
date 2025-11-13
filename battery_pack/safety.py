@@ -117,12 +117,15 @@ class ThermalRunawayModel:
         Returns:
                 Dictionary with propagation simulation results
         """
-        # Simplified propagation model
+        # Calculate time needed for propagation to adjacent cell
         propagation_time_s = cell_spacing_m / self.params.propagation_speed_ms
 
         affected_cells = set(initial_cells)
         time_points = [0.0]
         affected_counts = [len(affected_cells)]
+
+        # Track when each cell was affected to determine propagation timing
+        cell_affected_time = {idx: 0.0 for idx in initial_cells}
 
         t = 0.0
         max_time = 60.0  # Maximum simulation time (s)
@@ -130,15 +133,23 @@ class ThermalRunawayModel:
 
         while t < max_time and len(affected_cells) < num_cells:
             t += dt
-            # Propagate to adjacent cells
-            new_affected = set()
-            for cell_idx in affected_cells:
-                if cell_idx > 0:
-                    new_affected.add(cell_idx - 1)
-                if cell_idx < num_cells - 1:
-                    new_affected.add(cell_idx + 1)
 
-            affected_cells.update(new_affected)
+            # Propagate to adjacent cells only after propagation time has elapsed
+            new_affected = set()
+            for cell_idx in list(affected_cells):
+                cell_trigger_time = cell_affected_time.get(cell_idx, t)
+                # Only propagate if enough time has passed since this cell was triggered
+                if t >= cell_trigger_time + propagation_time_s:
+                    if cell_idx > 0 and (cell_idx - 1) not in affected_cells:
+                        new_affected.add(cell_idx - 1)
+                        cell_affected_time[cell_idx - 1] = t
+                    if cell_idx < num_cells - 1 and (cell_idx + 1) not in affected_cells:
+                        new_affected.add(cell_idx + 1)
+                        cell_affected_time[cell_idx + 1] = t
+
+            if new_affected:
+                affected_cells.update(new_affected)
+
             time_points.append(t)
             affected_counts.append(len(affected_cells))
 
