@@ -67,6 +67,35 @@
 
 ---
 
+### 🚀 Key Features
+
+#### Core Capabilities
+- **Electro-Thermal Modeling** - First-order ECM (R0 + R1||C1) with lumped/multi-node thermal networks
+- **Pack-Level Simulation** - Ns×Np series-parallel configurations with cell-to-cell variation
+- **Aging & Degradation** - Capacity fade and resistance growth modeling
+- **Balancing Strategies** - Passive and active cell balancing algorithms
+- **Comprehensive Metrics** - 30+ performance indicators (RTE, C-rate, power density, thermal metrics, etc.)
+
+#### Industry-Specific Features
+- **🚗 Automotive** - Real-world drive cycles (EPA, WLTP, NEDC), fast charging (CCS, CHAdeMO, Supercharger), BMS algorithms
+- **✈️ Aerospace & Defense** - Mission profiles, Monte Carlo uncertainty quantification, thermal runaway modeling, FMEA
+- **⚡ Energy & Grid** - Economic analysis (LCOE), grid integration (V2G), energy arbitrage, capacity market analysis
+- **🏥 Healthcare** - Safety analysis, compliance verification, thermal runaway prevention
+- **💻 Semiconductors** - Parameter sensitivity analysis, statistical process variation, yield analysis
+
+#### Enterprise Features
+- **Configuration Management** - YAML/JSON config files for reproducible simulations
+- **Data Export** - CSV, JSON, HDF5 formats for cloud/enterprise integration
+- **Structured Logging** - Production-ready logging with configurable levels
+- **Parallel Processing** - Multi-core parameter sweeps with progress bars
+- **CI/CD Pipeline** - GitHub Actions with automated testing, linting, type checking
+- **Code Quality** - Black formatting, MyPy type checking, pytest coverage
+
+> 📚 **For detailed feature documentation, see [FEATURES.md](FEATURES.md)**
+
+---
+
+
 ### 📊 Visual Results & Output Gallery
 
 **Real simulation outputs generated from actual tests** - See the results below:
@@ -106,34 +135,6 @@ python scripts/run_advanced_demo.py --thermal-mode fin
 ```
 
 All outputs are saved with timestamps in `outputs/` directory for reproducibility and documentation.
-
----
-
-### 🚀 Key Features
-
-#### Core Capabilities
-- **Electro-Thermal Modeling** - First-order ECM (R0 + R1||C1) with lumped/multi-node thermal networks
-- **Pack-Level Simulation** - Ns×Np series-parallel configurations with cell-to-cell variation
-- **Aging & Degradation** - Capacity fade and resistance growth modeling
-- **Balancing Strategies** - Passive and active cell balancing algorithms
-- **Comprehensive Metrics** - 30+ performance indicators (RTE, C-rate, power density, thermal metrics, etc.)
-
-#### Industry-Specific Features
-- **🚗 Automotive** - Real-world drive cycles (EPA, WLTP, NEDC), fast charging (CCS, CHAdeMO, Supercharger), BMS algorithms
-- **✈️ Aerospace & Defense** - Mission profiles, Monte Carlo uncertainty quantification, thermal runaway modeling, FMEA
-- **⚡ Energy & Grid** - Economic analysis (LCOE), grid integration (V2G), energy arbitrage, capacity market analysis
-- **🏥 Healthcare** - Safety analysis, compliance verification, thermal runaway prevention
-- **💻 Semiconductors** - Parameter sensitivity analysis, statistical process variation, yield analysis
-
-#### Enterprise Features
-- **Configuration Management** - YAML/JSON config files for reproducible simulations
-- **Data Export** - CSV, JSON, HDF5 formats for cloud/enterprise integration
-- **Structured Logging** - Production-ready logging with configurable levels
-- **Parallel Processing** - Multi-core parameter sweeps with progress bars
-- **CI/CD Pipeline** - GitHub Actions with automated testing, linting, type checking
-- **Code Quality** - Black formatting, MyPy type checking, pytest coverage
-
-> 📚 **For detailed feature documentation, see [FEATURES.md](FEATURES.md)**
 
 ---
 
