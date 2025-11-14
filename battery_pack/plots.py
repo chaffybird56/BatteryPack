@@ -14,8 +14,8 @@ def ensure_dir(path: Path) -> None:
 
 
 def plot_time_series(df: pd.DataFrame, out_dir: Path, title: str = "Pack Time Series") -> Path:
-	ensure_dir(out_dir)
-	fig, axes = plt.subplots(4, 1, figsize=(6.4, 4.8), sharex=True)
+    ensure_dir(out_dir)
+    fig, axes = plt.subplots(4, 1, figsize=(6.4, 4.8), sharex=True)
     t = df["time_s"].to_numpy()
     axes = axes
     axes[0].plot(t, df["i_pack_a"], label="Current (A)", color="#4e79a7")
