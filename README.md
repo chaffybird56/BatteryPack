@@ -10,19 +10,47 @@
 
 ### 📖 What is This Project?
 
-**BatteryPack Simulator** is a comprehensive simulation framework for modeling and analyzing battery pack performance across multiple domains. It combines electro-thermal modeling, safety analysis, and economic evaluation to help engineers design, optimize, and validate battery systems for electric vehicles, aerospace applications, grid storage, and more.
+**BatteryPack Simulator** is a comprehensive simulation framework for modeling and analyzing battery pack performance across multiple domains.
 
-At its core, the framework simulates how battery packs behave under real-world conditions:
+<p align="center">
+  <img src="assets/time_series.png" alt="Battery Simulation" width="600" />
+</p>
 
-- **Electrical behavior** - Voltage, current, and power dynamics as cells charge and discharge
-- **Thermal response** - How packs heat up during operation and cool down with different cooling strategies
-- **Efficiency analysis** - Energy losses and round-trip efficiency calculations
-- **Safety assessment** - Thermal runaway risk, failure modes, and protection algorithms
-- **Economic evaluation** - Cost modeling, lifecycle economics, and grid integration revenue
+**Design, simulate, and optimize battery packs** with industry-standard tools:
 
-The simulation uses equivalent circuit models (ECM) for individual cells, models them in series-parallel pack configurations, and tracks thermal dynamics as energy flows in and out. It's designed to answer critical design questions like: *"Will this pack configuration meet power requirements?"*, *"How hot will it get during fast charging?"*, *"What's the expected efficiency and lifetime?"*, and *"Does it meet safety requirements?"*
+- ⚡ **Electrical Modeling** - Voltage, current, and power dynamics
+- 🌡️ **Thermal Analysis** - Temperature rise and cooling strategies  
+- 🔋 **Efficiency Metrics** - Round-trip efficiency and energy losses
+- 🛡️ **Safety Assessment** - Thermal runaway and failure mode analysis
+- 💰 **Economic Evaluation** - Cost modeling and grid integration revenue
 
-The framework includes industry-standard drive cycles (EPA, WLTP, NEDC) for automotive validation, mission profiles for aerospace applications, fast charging protocols (CCS, CHAdeMO, Supercharger), Monte Carlo uncertainty analysis for reliability assessment, and economic tools for grid storage applications. All results are exportable in multiple formats for integration into design workflows and reports.
+<p align="center">
+  <img src="assets/temperature.png" alt="Thermal Analysis" width="600" />
+</p>
+
+**Answer critical design questions**:
+- *Will this pack meet power requirements?*
+- *How hot will it get during fast charging?*
+- *What's the expected efficiency and lifetime?*
+- *Does it meet safety requirements?*
+
+**Industry-ready features**: EPA/WLTP drive cycles, fast charging protocols (CCS, Supercharger), Monte Carlo reliability analysis, and economic modeling for grid storage.
+
+---
+
+### 📋 Table of Contents
+
+- [What is This Project?](#-what-is-this-project)
+- [Key Capabilities](#-key-capabilities)
+- [Visual Results](#-visual-results--output-gallery)
+- [Features](#-key-features)
+- [Installation](#-installation)
+- [Quick Start](#-quick-start)
+- [Use Cases](#-example-use-cases)
+- [Project Structure](#-project-structure)
+- [Testing & Quality](#-testing--quality)
+- [Documentation](#-documentation)
+- [Advanced Features](#-advanced-features)
 
 ---
 
@@ -47,19 +75,19 @@ The framework includes industry-standard drive cycles (EPA, WLTP, NEDC) for auto
 
 **1. Time Series Analysis** - Current, voltage, power, and SOC during discharge cycle
 
-![Time Series](assets/time_series.png)
+<img src="assets/time_series.png" alt="Time Series" width="512" />
 
 **2. Thermal Profile** - Pack temperature evolution during charge/discharge phases
 
-![Temperature Profile](assets/temperature.png)
+<img src="assets/temperature.png" alt="Temperature Profile" width="512" />
 
 **3. Round-Trip Efficiency** - Energy efficiency metrics after full charge/discharge cycle
 
-![Round-Trip Efficiency](assets/rte.png)
+<img src="assets/rte.png" alt="Round-Trip Efficiency" width="410" />
 
 **4. Power Limits** - Maximum discharge/charge power vs SOC (critical for BMS design)
 
-![Power Limits](assets/power_limits.png)
+<img src="assets/power_limits.png" alt="Power Limits" width="512" />
 
 #### How to Generate These Results
 
@@ -246,20 +274,6 @@ flake8 battery_pack/ scripts/ tests/
 - **[INDUSTRY_APPLICATIONS.md](INDUSTRY_APPLICATIONS.md)** - Industry-specific use cases
 - **API Documentation** - Comprehensive docstrings with type hints in code
 - **Configuration Templates** - Use `battery_pack.config_loader.save_config_template()`
-
-### 📋 Table of Contents
-
-- [What is This Project?](#-what-is-this-project)
-- [Key Capabilities](#-key-capabilities)
-- [Visual Results](#-visual-results--output-gallery)
-- [Features](#-key-features)
-- [Installation](#-installation)
-- [Quick Start](#-quick-start)
-- [Use Cases](#-example-use-cases)
-- [Project Structure](#-project-structure)
-- [Testing & Quality](#-testing--quality)
-- [Documentation](#-documentation)
-- [Advanced Features](#-advanced-features)
 
 ---
 
