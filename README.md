@@ -35,8 +35,10 @@
 - *How hot will it get during fast charging?*
 - *What's the expected efficiency and lifetime?*
 - *Does it meet safety requirements?*
+- *Can it provide reliable backup power for UPS applications?*
+- *Does it comply with Ontario Electrical Safety Code and CSA standards?*
 
-**Industry-ready features**: EPA/WLTP drive cycles, fast charging protocols (CCS, Supercharger), Monte Carlo reliability analysis, and economic modeling for grid storage.
+**Industry-ready features**: EPA/WLTP drive cycles, fast charging protocols (CCS, Supercharger), Monte Carlo reliability analysis, economic modeling for grid storage, **UPS/backup power systems**, and **compliance testing** for electrical safety codes.
 
 ---
 
@@ -64,6 +66,8 @@
 - ✅ **Safety Analysis** - Thermal runaway modeling, FMEA, and comprehensive protection algorithms
 - ✅ **Uncertainty Quantification** - Monte Carlo analysis for reliability and safety margin assessment
 - ✅ **Economic Modeling** - Cost analysis, LCOE calculation, and grid integration revenue modeling
+- ✅ **🔌 UPS & Backup Power Systems** - Engineered battery backup systems and uninterrupted power supply solutions for electrical power systems supporting reliable operations
+- ✅ **✅ Compliance Testing** - Validated battery systems through testing ensuring compliance with Ontario Electrical Safety Code, CSA, and performance specifications
 - ✅ **Enterprise Features** - Configuration management, data export, structured logging, parallel processing
 - ✅ **Production-Ready Code** - Type hints, comprehensive testing, CI/CD pipeline, code quality tools
 
@@ -196,6 +200,31 @@ rte = simulator.round_trip_efficiency(cycle, initial_soc=0.8)
 print(f"Round-Trip Efficiency: {rte.RTE_percent:.2f}%")
 ```
 
+#### UPS & Backup Power Systems
+
+```python
+from battery_pack import (
+    UPSBackupSystem, UPSRequirements, design_ups_system
+)
+
+# Define UPS requirements
+requirements = UPSRequirements(
+    backup_power_kw=5.0,
+    backup_duration_hours=2.0,
+    compliance_standards=["OESC", "CSA"]  # Ontario Electrical Safety Code, CSA
+)
+
+# Design UPS system
+ups_pack = design_ups_system(requirements)
+
+# Analyze backup requirements
+ups_system = UPSBackupSystem(ups_pack)
+analysis = ups_system.analyze_backup_requirements(requirements)
+
+print(f"Backup Capacity: {analysis.backup_capacity_kwh} kWh")
+print(f"Compliance Status: {analysis.compliance_status}")
+```
+
 > 📖 **For comprehensive code examples, see [EXAMPLES.md](EXAMPLES.md)**
 
 ---
@@ -205,9 +234,11 @@ print(f"Round-Trip Efficiency: {rte.RTE_percent:.2f}%")
 1. **EV Pack Design** - Optimize series/parallel configuration for target range and power
 2. **Fast Charging Analysis** - Simulate CCS/Supercharger sessions with thermal management
 3. **Grid Storage Economics** - Calculate LCOE and revenue from V2G/arbitrage
-4. **Aerospace Mission Planning** - Verify battery can support mission profile with safety margins
-5. **Defense Reliability Analysis** - Monte Carlo simulation to ensure 99.9% reliability
-6. **Thermal Management Design** - Compare air/fin/PCM/liquid cooling strategies
+4. **🔌 UPS & Backup Power Systems** - Design and validate battery backup systems and uninterrupted power supply solutions for electrical power systems
+5. **✅ Compliance Testing** - Validate battery systems ensuring compliance with Ontario Electrical Safety Code, CSA, and performance specifications
+6. **Aerospace Mission Planning** - Verify battery can support mission profile with safety margins
+7. **Defense Reliability Analysis** - Monte Carlo simulation to ensure 99.9% reliability
+8. **Thermal Management Design** - Compare air/fin/PCM/liquid cooling strategies
 
 > 🎓 **For detailed industry applications, see [INDUSTRY_APPLICATIONS.md](INDUSTRY_APPLICATIONS.md)**
 
