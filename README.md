@@ -23,6 +23,8 @@
 - 🔋 **Efficiency Metrics** - Round-trip efficiency and energy losses
 - 🛡️ **Safety Assessment** - Thermal runaway and failure mode analysis
 - 💰 **Economic Evaluation** - Cost modeling and grid integration revenue
+- 🔌 **UPS & Backup Power** - Uninterrupted power supply and battery backup systems for electrical power systems
+- ✅ **Compliance Testing** - Validation ensuring compliance with Ontario Electrical Safety Code, CSA, and performance specifications
 
 <p align="center">
   <img src="assets/temperature.png" alt="Thermal Analysis" width="600" />
@@ -75,6 +77,8 @@
 - **Aging & Degradation** - Capacity fade and resistance growth modeling
 - **Balancing Strategies** - Passive and active cell balancing algorithms
 - **Comprehensive Metrics** - 30+ performance indicators (RTE, C-rate, power density, thermal metrics, etc.)
+- **UPS & Backup Power Systems** - Engineered battery backup systems and uninterrupted power supply solutions for reliable operations
+- **Compliance Validation** - Testing ensuring compliance with Ontario Electrical Safety Code, CSA, and performance specifications
 
 #### Industry-Specific Features
 - **🚗 Automotive** - Real-world drive cycles (EPA, WLTP, NEDC), fast charging (CCS, CHAdeMO, Supercharger), BMS algorithms
