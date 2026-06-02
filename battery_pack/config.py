@@ -66,3 +66,53 @@ def default_limits_params() -> LimitsParams:
 
 def default_simulation_params() -> SimulationParams:
     return SimulationParams()
+
+
+# ECM presets for common Li-ion chemistries (capacity, OCV window, resistance).
+CHEMISTRY_PRESETS: dict[str, CellParams] = {
+    "NMC811": CellParams(
+        capacity_ah=3.0,
+        R0_ohm=0.0025,
+        R1_ohm=0.0015,
+        V_min=3.0,
+        V_max=4.2,
+        ocv_floor_v=3.0,
+        ocv_ceiling_v=4.2,
+    ),
+    "LFP": CellParams(
+        capacity_ah=3.2,
+        R0_ohm=0.0035,
+        R1_ohm=0.0020,
+        V_min=2.5,
+        V_max=3.65,
+        ocv_floor_v=2.5,
+        ocv_ceiling_v=3.65,
+    ),
+    "LCO": CellParams(
+        capacity_ah=2.8,
+        R0_ohm=0.0028,
+        R1_ohm=0.0018,
+        V_min=3.0,
+        V_max=4.2,
+        ocv_floor_v=3.0,
+        ocv_ceiling_v=4.2,
+    ),
+    "NCA": CellParams(
+        capacity_ah=3.5,
+        R0_ohm=0.0022,
+        R1_ohm=0.0012,
+        V_min=3.0,
+        V_max=4.2,
+        ocv_floor_v=3.0,
+        ocv_ceiling_v=4.2,
+    ),
+}
+
+
+def cell_params_for_chemistry(name: str) -> CellParams:
+    key = name.upper().replace("-", "").replace("_", "")
+    aliases = {"NMC": "NMC811", "LITHIUMIRONPHOSPHATE": "LFP"}
+    key = aliases.get(key, key)
+    if key not in CHEMISTRY_PRESETS:
+        raise KeyError(f"Unknown chemistry '{name}'. Choose from: {', '.join(CHEMISTRY_PRESETS)}")
+    return CHEMISTRY_PRESETS[key]
