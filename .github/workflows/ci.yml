@@ -28,7 +28,7 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
-          pip install pytest-cov black
+          pip install black
 
       - name: Check formatting (black)
         run: black --check battery_pack/ scripts/ tests/
