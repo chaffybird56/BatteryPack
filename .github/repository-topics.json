@@ -1,0 +1,25 @@
+{
+  "description": "Python battery pack simulator: ECM electro-thermal model, RTE, BMS, thermal runaway, drive cycles, EV/grid/UPS analysis.",
+  "topics": [
+    "battery-simulation",
+    "lithium-ion",
+    "battery-pack",
+    "battery-modeling",
+    "equivalent-circuit-model",
+    "electro-thermal",
+    "bms",
+    "thermal-runaway",
+    "state-of-charge",
+    "round-trip-efficiency",
+    "drive-cycle",
+    "fast-charging",
+    "electric-vehicle",
+    "energy-storage",
+    "grid-storage",
+    "ups-backup",
+    "monte-carlo",
+    "python",
+    "open-source",
+    "simulation"
+  ]
+}

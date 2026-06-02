@@ -104,7 +104,7 @@ Search-friendly tags for this project:
 
 `battery-simulation` · `lithium-ion` · `battery-pack` · `battery-modeling` · `equivalent-circuit-model` · `electro-thermal` · `bms` · `thermal-runaway` · `state-of-charge` · `round-trip-efficiency` · `drive-cycle` · `fast-charging` · `electric-vehicle` · `energy-storage` · `grid-storage` · `ups-backup` · `monte-carlo` · `python` · `open-source`
 
-On GitHub, these are also set as repository **Topics** (Settings → General → Topics) for discovery in search and topic pages.
+Repository **Topics** on GitHub are applied automatically by CI (`.github/workflows/set-topics.yml`) from `.github/repository-topics.json`.
 
 ## License
 

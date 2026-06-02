@@ -1,0 +1,51 @@
+name: Apply repository topics
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - .github/repository-topics.json
+      - .github/workflows/set-topics.yml
+  workflow_dispatch:
+
+permissions:
+  administration: write
+  contents: read
+
+jobs:
+  topics:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set repository description and topics
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          python3 << 'PY'
+          import json
+          import os
+          import urllib.request
+
+          repo = os.environ["GITHUB_REPOSITORY"]
+          token = os.environ["GH_TOKEN"]
+          data = json.load(open(".github/repository-topics.json"))
+
+          def api(method, path, body=None):
+              req = urllib.request.Request(
+                  f"https://api.github.com{path}",
+                  data=json.dumps(body).encode() if body is not None else None,
+                  method=method,
+                  headers={
+                      "Authorization": f"Bearer {token}",
+                      "Accept": "application/vnd.github+json",
+                      "X-GitHub-Api-Version": "2022-11-28",
+                  },
+              )
+              with urllib.request.urlopen(req) as resp:
+                  return resp.status
+
+          api("PATCH", f"/repos/{repo}", {"description": data["description"]})
+          api("PUT", f"/repos/{repo}/topics", {"names": data["topics"]})
+          print(f"Updated {repo}: description + {len(data['topics'])} topics")
+          PY
