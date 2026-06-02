@@ -1,5 +1,7 @@
 # BatteryPack
 
+<!-- battery simulation, lithium-ion pack, BMS, thermal runaway, equivalent circuit model, EV battery, energy storage, Python -->
+
 [![CI](https://img.shields.io/github/actions/workflow/status/chaffybird56/BatteryPack/ci.yml?branch=main&label=CI&logo=github)](https://github.com/chaffybird56/BatteryPack/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 [![Python](https://img.shields.io/badge/Python-3.10%2B-blue)](https://www.python.org/)
@@ -95,6 +97,14 @@ from battery_pack.pack import BatteryPack
 cell = cell_params_for_chemistry("LFP")  # or NMC811, NCA, LCO
 pack = BatteryPack(cell_params=cell, ...)
 ```
+
+## Topics
+
+Search-friendly tags for this project:
+
+`battery-simulation` · `lithium-ion` · `battery-pack` · `battery-modeling` · `equivalent-circuit-model` · `electro-thermal` · `bms` · `thermal-runaway` · `state-of-charge` · `round-trip-efficiency` · `drive-cycle` · `fast-charging` · `electric-vehicle` · `energy-storage` · `grid-storage` · `ups-backup` · `monte-carlo` · `python` · `open-source`
+
+On GitHub, these are also set as repository **Topics** (Settings → General → Topics) for discovery in search and topic pages.
 
 ## License
 
