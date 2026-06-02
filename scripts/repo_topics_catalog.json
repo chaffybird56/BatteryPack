@@ -1,0 +1,90 @@
+{
+  "ApolloDQN": {
+    "description": "From-scratch Deep Q-Network (DQN) in PyTorch that learns to land Gymnasium LunarLander-v3.",
+    "topics": ["reinforcement-learning", "deep-q-network", "dqn", "pytorch", "gymnasium", "lunar-lander", "machine-learning", "neural-networks", "python", "open-source", "simulation", "autopilot"]
+  },
+  "CAN-RTOS-Sim": {
+    "description": "Simulated CAN bus and RTOS-style nodes with fault injection, timing analysis, and CI-tested Python tooling.",
+    "topics": ["can-bus", "embedded-systems", "rtos", "fault-injection", "automotive", "simulation", "python", "c", "real-time", "open-source", "ci-cd", "networking"]
+  },
+  "CellPowerTrace": {
+    "description": "Cellular power regression analyzer for simulated 5G UE stacks (Open5GS, UERANSIM) with Perl/Python pipeline and KPI deltas.",
+    "topics": ["5g", "cellular", "power-management", "ueransim", "open5gs", "regression-testing", "python", "perl", "telemetry", "nr", "docker", "open-source", "networking", "simulation"]
+  },
+  "ClearPath-Radar": {
+    "description": "Moving-target indication (MTI) radar processing: clutter suppression, Doppler/FFT pipeline for roadside target detection.",
+    "topics": ["radar", "mti", "moving-target-indication", "doppler", "dsp", "fft", "clutter-suppression", "signal-processing", "python", "embedded-systems", "open-source"]
+  },
+  "F-Domain-Sensing": {
+    "description": "DFT exploration and FMCW radar FFT demos on TI TMS320 — frequency-domain sensing and DSP fundamentals.",
+    "topics": ["dsp", "dft", "fft", "fmcw-radar", "tms320", "frequency-domain", "signal-processing", "embedded-systems", "c", "education", "open-source", "radar"]
+  },
+  "Foresight": {
+    "description": "Equipment health monitoring for power/nuclear-style assets: KPI trends, anomaly detection, Weibull reliability, and OPEX scenarios.",
+    "topics": ["predictive-maintenance", "reliability-engineering", "anomaly-detection", "weibull", "fastapi", "python", "monitoring", "kpi", "power-systems", "open-source", "dashboard", "equipment-health"]
+  },
+  "GlucoseStream": {
+    "description": "Serverless AWS analytics pipeline for glucose telemetry ingestion, processing, and visualization.",
+    "topics": ["aws", "serverless", "lambda", "healthcare", "glucose-monitoring", "analytics", "python", "data-pipeline", "cloud", "open-source", "iot", "timeseries"]
+  },
+  "isp-axi4": {
+    "description": "Verilog image signal processor with AXI4-Stream interfaces — RTL ISP pipeline for FPGA SoC integration.",
+    "topics": ["verilog", "fpga", "axi4", "axi4-stream", "image-signal-processing", "rtl", "hardware-design", "computer-vision", "embedded-systems", "open-source", "soc", "hdl"]
+  },
+  "optimal-clusters": {
+    "description": "Adaptive K-means color quantization for image segmentation and compression — from-scratch clustering in Python.",
+    "topics": ["k-means", "clustering", "image-compression", "color-quantization", "computer-vision", "python", "algorithms", "image-processing", "open-source", "machine-learning"]
+  },
+  "RadioForge": {
+    "description": "RF test automation framework with Spring Boot, instrument drivers, and structured measurement workflows.",
+    "topics": ["rf-testing", "test-automation", "java", "spring-boot", "maven", "wireless", "telecom", "instrumentation", "open-source", "lab-automation", "radio-frequency"]
+  },
+  "riscv-soc": {
+    "description": "RISC-V SoC with Wishbone vector accelerator, firmware/drivers, Verilator sim, and synthesis QoR iteration scripts.",
+    "topics": ["risc-v", "soc", "verilog", "wishbone", "verilator", "fpga", "hardware-design", "accelerator", "embedded-systems", "open-source", "rtl", "firmware", "synthesis"]
+  },
+  "Angle-Based-Motion-Tracking": {
+    "description": "Angle-of-arrival (AoA) motion estimation: recover target position and velocity from bearing-only measurements.",
+    "topics": ["aoa", "angle-of-arrival", "motion-estimation", "tracking", "estimation", "nonlinear-optimization", "python", "signal-processing", "open-source", "localization", "sensor-fusion"]
+  },
+  "morpho-plate": {
+    "description": "Lightweight ALPR pipeline: morphology + OCR for real-time license plate detection on road imagery.",
+    "topics": ["alpr", "license-plate-recognition", "computer-vision", "opencv", "ocr", "morphology", "image-processing", "deep-learning", "python", "real-time", "open-source"]
+  },
+  "MuscleMate": {
+    "description": "Myoelectric (EMG) controlled robotic arm for surgical instrument sterilization workflow assistance.",
+    "topics": ["emg", "myoelectric", "robotics", "signal-processing", "medical-devices", "surgical-tools", "python", "embedded-systems", "open-source", "human-machine-interface"]
+  },
+  "PixelWeave": {
+    "description": "Bayer demosaicing with least-squares and Gaussian smoothing — full-color reconstruction from sensor mosaic.",
+    "topics": ["demosaicing", "bayer-filter", "image-processing", "computer-vision", "matlab", "algorithms", "bayesian-optimization", "regression", "open-source", "isp"]
+  },
+  "Upright-Pendulum": {
+    "description": "Inverted pendulum stabilization using state feedback and observer design — Simulink/MATLAB control systems lab.",
+    "topics": ["control-systems", "inverted-pendulum", "state-feedback", "observer", "simulink", "matlab", "lqr", "open-source", "robotics", "education"]
+  },
+  "cpp-telemetry-fuser": {
+    "description": "Production-style C++ telemetry microservice: CMake, Docker, sanitizers, coverage, and CI-tested sensor fusion APIs.",
+    "topics": ["cpp", "c-plus-plus", "telemetry", "microservice", "cmake", "docker", "ci", "sanitizers", "test-coverage", "sensor-fusion", "open-source", "backend"]
+  },
+  "MissionControl-AMR": {
+    "description": "ROS 2 autonomous mobile robot in Webots with Nav2 navigation, mission dashboard, and live telemetry.",
+    "topics": ["ros2", "nav2", "autonomous-mobile-robot", "amr", "webots", "robotics", "navigation", "slam", "python", "open-source", "simulation", "control"]
+  },
+  "Rotational-3D-LiDAR": {
+    "description": "MSP432-driven rotating ToF LiDAR scanner generating 3D point clouds with Python visualization.",
+    "topics": ["lidar", "lidar-point-cloud", "msp432", "embedded-systems", "c", "python", "3d-scanning", "time-of-flight", "robotics", "open-source", "sensors"]
+  },
+  "Wattboard": {
+    "description": "Multi-site electrical energy monitoring dashboard: MQTT ingestion, Flask UI, traction power analytics and alerts.",
+    "topics": ["energy-monitoring", "power-systems", "mqtt", "flask", "python", "dashboard", "traction-power", "iot", "open-source", "real-time", "analytics"]
+  },
+  "PCBSolderRobot": {
+    "description": "Capstone autonomous PCB soldering robot: vision-guided placement, STM32 motion control, and mechanical design.",
+    "topics": ["robotics", "pcb", "computer-vision", "machine-learning", "stm32", "embedded-systems", "mechanical-design", "circuit-design", "open-source", "automation", "capstone"]
+  },
+  "MappingLocalization-AV": {
+    "description": "2D occupancy grid SLAM for teaching AV stack: LiDAR scans, ROS integration, Jetson-friendly mapping pipeline.",
+    "topics": ["slam", "occupancy-grid", "autonomous-vehicles", "lidar", "ros", "mapping", "localization", "jetson", "python", "open-source", "robotics", "perception"]
+  }
+}
