@@ -13,14 +13,14 @@ It couples a first-order equivalent-circuit cell model with pack-level series/pa
 
 ## Key capabilities
 
-- **Electro-thermal modeling** — ECM cell (R₀ + R₁‖C₁), Ns×Np pack, thermal network, temperature-dependent resistance
-- **DC power & efficiency** — Pack V/I/P/SoC time series; round-trip energy efficiency (RTE)
-- **Configurable chemistries** — LFP, NMC811, NCA, LCO presets (`cell_params_for_chemistry()`)
-- **Load & charge profiles** — Synthetic cycles, CSV velocity profiles, fast-charge curve models (CCS / CHAdeMO / Supercharger-style)
-- **Automotive-style cycles** — Parametric EPA UDDS, WLTP, NEDC generators (see [FEATURES.md](FEATURES.md) for limits)
-- **BMS & safety** — Protection limits, thermal-runaway triggers, hazard index, FMEA table
-- **Analysis extras** — Mission profiles, Monte Carlo sweeps, economics/LCOE, UPS backup sizing, metrics export (CSV/JSON/HDF5)
-- **CI** — pytest on Python 3.10–3.12, Black formatting
+- **Electro-thermal modeling** 
+- **DC power & efficiency** 
+- **Configurable chemistries** 
+- **Load & charge profiles** 
+- **Automotive-style cycles** 
+- **BMS & safety**
+- **Analysis extras** 
+- **CI** 
 
 > Full module-by-module inventory (including what is *not* built): **[FEATURES.md](FEATURES.md)**
 
