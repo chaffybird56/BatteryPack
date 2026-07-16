@@ -22,7 +22,7 @@ It couples a first-order equivalent-circuit cell model with pack-level series/pa
 - **Analysis extras** 
 - **CI** 
 
-> Full module-by-module inventory (including what is *not* built): **[FEATURES.md](FEATURES.md)**
+> Full module-by-module inventory: **[FEATURES.md](FEATURES.md)**
 
 ---
 
