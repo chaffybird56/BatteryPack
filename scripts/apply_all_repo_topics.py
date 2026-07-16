@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 """Apply GitHub descriptions and topics for chaffybird56 repos from repo_topics_catalog.json."""
+
 from __future__ import annotations
 
 import json
@@ -23,9 +24,7 @@ def git_token() -> str:
         capture_output=True,
         text=True,
     )
-    creds = dict(
-        line.split("=", 1) for line in proc.stdout.splitlines() if "=" in line
-    )
+    creds = dict(line.split("=", 1) for line in proc.stdout.splitlines() if "=" in line)
     token = creds.get("password")
     if not token:
         raise SystemExit("No GitHub token from git credential helper.")
