@@ -97,14 +97,6 @@ cell = cell_params_for_chemistry("LFP")  # or NMC811, NCA, LCO
 pack = BatteryPack(cell_params=cell, ...)
 ```
 
-## Topics
-
-Search-friendly tags for this project:
-
-`battery-simulation` · `lithium-ion` · `battery-pack` · `battery-modeling` · `equivalent-circuit-model` · `electro-thermal` · `bms` · `thermal-runaway` · `state-of-charge` · `round-trip-efficiency` · `drive-cycle` · `fast-charging` · `electric-vehicle` · `energy-storage` · `grid-storage` · `ups-backup` · `monte-carlo` · `python` · `open-source`
-
-GitHub **Topics** for this repo are defined in `.github/repository-topics.json`. Re-apply after edits: `bash scripts/set_github_topics.sh` (uses your existing git GitHub credentials).
-
 ## License
 
 MIT — see [LICENSE](LICENSE).
